@@ -1,0 +1,995 @@
+/*
+ * Project: Dhaka Local Bus Information System
+ * Author: Group-38
+            
+                * Gazi Hasibur Rahman - (41220100105)
+                * Emon Ahmed Shishir  - (41220100110)
+                * Ferdous Alam Prince - (41220100135)
+                * Sowrav Chandra Das  - (41220100137)
+                * Joyonto Kumer Das   - (41220100140)
+
+ * Date: May 25, 2025
+ * Description: Core styles for the bus route information system,
+ * including global resets, typography, layout,
+ * components, and responsive adjustments.
+ */
+
+/*
+ * -------------------------------------------------------------
+ * 1. CSS Custom Properties (Variables)
+ * -------------------------------------------------------------
+ * Defines a centralized color palette, spacing, and other
+ * repeatable values for easier maintenance and consistency.
+ */
+:root {
+    /* Color Palette */
+    --color-primary: #2c3e50;         /* Deep Blue/Charcoal */
+    --color-secondary: #3498db;       /* Bright Blue */
+    --color-accent: #d36f12;          /* Orange */
+    --color-text-dark: #333;
+    --color-text-medium: #34495e;
+    --color-text-light: #7f8c8d;
+    --color-bg-light: #e6fcfc;        /* Very Light Cyan */
+    --color-card-bg: #cdf1ff;         /* Light Sky Blue */
+    --color-error: #e74c3c;           /* Red */
+    --color-success: #27ae60;         /* Green */
+
+    /* Grayscale & Neutrals */
+    --color-white: #ffffff;
+    --color-gray-100: #f8f9fa;
+    --color-gray-200: #e9ecef;
+    --color-gray-300: #dee2e6;
+    --color-gray-400: #ced4da;
+    --color-gray-500: #adb5bd;
+    --color-gray-600: #6c757d;
+    --color-gray-700: #495057;
+    --color-gray-800: #343a40;
+    --color-gray-900: #212529;
+
+    /* Spacing */
+    --space-xs: 0.5rem;   /* 8px */
+    --space-sm: 1rem;     /* 16px */
+    --space-md: 1.5rem;   /* 24px */
+    --space-lg: 2rem;     /* 32px */
+    --space-xl: 3rem;     /* 48px */
+
+    /* Typography */
+    --font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 1rem; /* 16px */
+    --line-height-base: 1.6;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* Borders & Shadows */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+    /* Accessibility */
+    --focus-ring-color: #4a90e2;
+}
+
+/*
+ * -------------------------------------------------------------
+ * 3. Base Styles & Resets
+ * -------------------------------------------------------------
+ * Universal box-sizing, basic body styles, and accessibility resets.
+ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* For smooth scrolling to anchors */
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: var(--line-height-base);
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased; /* For better font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+/* Accessibility: Focus styles */
+:focus-visible {
+    outline: 3px solid var(--focus-ring-color);
+    outline-offset: 2px;
+}
+
+/* Utility: Container for consistent content width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-sm); /* Using variable for padding */
+    width: 100%;
+}
+
+/* Accessibility: Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-xs) var(--space-sm);
+    z-index: 100;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/*
+ * -------------------------------------------------------------
+ * 4. Layout & Structure Components
+ * -------------------------------------------------------------
+ */
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--color-primary);
+    padding: var(--space-sm) 0;
+    box-shadow: var(--box-shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+.logo:hover{
+    color: white;
+
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: var(--space-lg);
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--color-white);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-md);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Banner Section */
+.banner {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    padding: var(--space-xl) 0;
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.banner p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1; /* Allows content to grow and push footer down */
+    padding: var(--space-lg) 0;
+}
+
+/* Section Header */
+.section-header {
+    max-width: 700px;
+    margin: var(--space-sm) auto var(--space-lg) auto; /* Top, Right/Left, Bottom */
+    border-radius: 20px; /* Specific style, consider making variable if reused */
+    background-color: var(--color-primary);
+    padding: var(--space-xs) var(--space-sm);
+    text-align: center;
+    font-size: var(--font-size-base);
+    color: var(--color-white);
+}
+
+/*
+ * -------------------------------------------------------------
+ * 5. Form Elements
+ * -------------------------------------------------------------
+ */
+
+/* Search Section */
+.search-section {
+    background-color: var(--color-card-bg);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-md);
+    margin: var(--space-lg) auto;
+    max-width: 800px;
+    box-shadow: var(--box-shadow-md);
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+.button {
+    background-color: #3eabf3;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.search-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.form-group label {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-medium);
+}
+
+
+
+.form-group select,
+.form-group input {
+    padding: 1rem;
+    border: 2px solid #5e5e5e;
+    border-radius: 5px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    width: 100%;
+    cursor: pointer;
+}
+
+.form-group select:hover,
+.form-group input:hover {
+    border-color: var(--secondary-color);
+
+}
+.form-group select option {
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #c9fcf9;
+    
+}
+#feedback { /* Grouping similar input styles */
+    padding: 0.75rem; /* Specific pixel value, could be var(--space-xs-plus) if defined */
+    border: 1.5px solid var(--color-gray-400); /* Using gray scale variable */
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    transition: all 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+#feedback:focus {
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+/* Textarea specific adjustment */
+#feedback {
+    min-height: 100px;
+    resize: vertical;
+    margin-bottom: var(--space-sm); /* Adjusted spacing */
+}
+
+/* Buttons */
+.btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/*
+ * -------------------------------------------------------------
+ * 6. Content Modules / Components
+ * -------------------------------------------------------------
+ */
+
+/* Search Results Page Specific */
+.results-header {
+    text-align: center;
+    margin: var(--space-lg) 0;
+}
+
+.results-header h1 {
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.search-params {
+    margin-bottom: var(--space-lg);
+    padding: var(--space-sm);
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.search-params p {
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem; /* Specific font size */
+}
+
+.search-params .btn {
+    display: inline-block; /* Override flex for contextual button */
+    margin-top: var(--space-xs);
+}
+
+/* Results Section */
+.results {
+    padding: var(--space-lg) 0;
+    flex: 1; /* Pushes content down on search results page */
+}
+
+.results-heading {
+    color: var(--color-text-medium);
+    font-size: 1.5rem; /* Specific font size */
+    margin-bottom: var(--space-xs);
+}
+
+.routes-count {
+    color: var(--color-text-light);
+    font-size: 1.1rem; /* Specific font size */
+}
+
+/* Bus Cards (used for search results) */
+.bus-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 var(--space-sm);
+}
+
+.bus-card {
+    background: var(--color-card-bg);
+    margin-bottom: var(--space-md); /* Redundant if using gap in .bus-cards, but kept for standalone use */
+    padding: var(--space-sm);
+    border-radius: var(--border-radius-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-md);
+}
+
+.bus-card h3 {
+    color: var(--color-text-dark);
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem; /* Specific font size */
+}
+
+.bus-card li {
+    margin-bottom: 8px; /* Specific pixel value */
+    list-style-type: none;
+}
+
+.bus-details {
+    color: var(--color-text-medium);
+}
+
+.bus-details p {
+    margin: var(--space-xs) 0;
+}
+
+/* Error Messages */
+.error {
+    background-color: #fff3f3; /* Specific light red, consider adding to palette */
+    border: 1px solid #ffcdd2; /* Specific red, consider adding to palette */
+    border-radius: var(--border-radius-md);
+    padding: var(--space-sm);
+    margin: var(--space-sm) 0;
+    text-align: center;
+}
+
+.error p {
+    color: var(--color-error);
+    margin-bottom: var(--space-sm);
+}
+
+.error .btn {
+    background-color: var(--color-primary);
+}
+
+/* Route Direction */
+.route-direction {
+    background-color: var(--color-card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-size: 1.1rem; /* Specific font size */
+    border-left: 6px solid var(--color-secondary); /* Specific pixel value */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Specific shadow */
+}
+
+.route-direction span {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Map Container */
+.map-container {
+    height: 500px; /* Specific height */
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-lg);
+    margin: var(--space-lg) 0;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/*
+ * -------------------------------------------------------------
+ * 7. Route Page Specific Components
+ * -------------------------------------------------------------
+ */
+
+.route-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    padding: var(--space-sm);
+}
+
+.route-card {
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-gray-300); /* Using gray scale variable */
+    overflow: hidden;
+    max-width: 800px; /* Added for consistency with other centered elements */
+    margin: 0 auto var(--space-lg) auto; /* Centered with bottom margin */
+    display: flex; /* Changed to flex for content/image layout */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.route-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-md);
+}
+
+.route-content {
+    padding: var(--space-md);
+    flex: 2; /* Allows content to take more space */
+}
+
+.route-title {
+    color: var(--color-primary);
+    font-size: 1.5rem; /* Specific font size */
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-secondary); /* Specific pixel value */
+}
+
+.route-description {
+    color: var(--color-text-medium);
+    font-size: 1.1rem; /* Specific font size */
+    line-height: var(--line-height-base);
+    margin-bottom: var(--space-md);
+}
+
+.bus-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-sm) 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr)); /* Adjusted for better small screen fit */
+    gap: var(--space-sm);
+}
+
+.bus-list li {
+    background-color: var(--color-primary);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+    justify-content: space-between;
+    align-items: center;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bus-list .bttn {
+    background-color: #3eabf3;
+    color: white;
+    width: 100px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bus-list .bttn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+.bus-list .bttn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+/* Toggle Button for Route Info */
+.toggle-route-info {
+    background-color: #baccdd; /* Specific color, consider adding to palette */
+    color: var(--color-text-dark); /* Changed to text-dark for light mode */
+    border: none;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    font-size: 0.9rem; /* Specific font size */
+    margin: var(--space-sm) auto; /* Centered */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Specific value */
+    width: fit-content; /* Adjust width to content */
+}
+
+.toggle-route-info:hover {
+    background-color: #b3bdc5; /* Specific color */
+    transform: translateY(-2px);
+}
+
+.toggle-route-info::after {
+    content: '▼';
+    font-size: 0.8rem; /* Specific value */
+    transition: transform 0.3s ease;
+}
+
+.toggle-route-info[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+/* Shared Route Info Content (Toggled) */
+.shared-route-info {
+    background: #ade2f7; /* Using secondary as background */
+    padding: var(--space-sm);
+    border: 1px solid var(--color-gray-400); /* Using gray scale */
+    border-radius: var(--border-radius-md);
+    margin-top: var(--space-xs);
+    border-left: 4px solid var(--color-primary); /* Specific pixel value */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out, margin 0.3s ease-out; /* Explicit transitions */
+    max-height: 500px; /* Max height for transition */
+    overflow: hidden;
+    color: black;
+}
+
+.shared-route-info.hidden {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    opacity: 0;
+    border-width: 0;
+}
+
+.shared-route {
+    color: black;
+    font-weight: var(--font-weight-medium);
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+/* Bus Find Section */
+.bus-find {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-card-bg);
+    margin-bottom: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--border-radius-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin: var(--space-md) auto; /* Centered */
+}
+
+/* Schedule Section */
+.schedule-section {
+    background-color: var(--color-card-bg);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-gray-300);
+}
+
+.schedule-section h3 {
+    font-size: 1.2rem; /* Specific font size */
+    color: var(--color-text-dark);
+    margin-bottom: var(--space-xs);
+}
+
+/* Route Table */
+.route-table {
+    width: 100%;
+    margin: var(--space-md) 0;
+    border-collapse: separate; /* Allows border-radius on cells */
+    border-spacing: 10px 8px; /* Space between rows */
+}
+
+.route-table th,
+.route-table td {
+    padding: var(--space-xs) var(--space-sm);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-base);
+}
+
+.route-table th {
+    background-color: #75c8ff; /* Specific color, consider adding to palette */
+    color: var(--color-text-dark); /* Assuming white text on this background */
+    border-radius: var(--border-radius-md); /* Apply to header cells */
+}
+
+.route-table td {
+    background-color: #c0e6ff; /* Specific color, consider adding to palette */
+    color: var(--color-gray-900); /* Darker text for contrast */
+    border-bottom: 1px solid var(--color-gray-400);
+    border-radius: var(--border-radius-md); /* Apply to data cells */
+}
+
+/* Remove default border for the first and last row if using separate borders */
+.route-table tr:first-child th:first-child { border-top-left-radius: var(--border-radius-md); }
+.route-table tr:first-child th:last-child { border-top-right-radius: var(--border-radius-md); }
+.route-table tr:last-child td:first-child { border-bottom-left-radius: var(--border-radius-md); }
+.route-table tr:last-child td:last-child { border-bottom-right-radius: var(--border-radius-md); }
+
+
+/* Route Info (within route-card, perhaps for individual route page) */
+.route-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.route-info p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-dark);
+}
+
+.route-info .btn {
+    width: fit-content; /* Ensure button width is based on content */
+    margin-top: var(--space-sm);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.route-info .btn:hover {
+    background-color: var(--color-secondary);
+}
+
+/*
+ * -------------------------------------------------------------
+ * 8. Footer
+ * -------------------------------------------------------------
+ */
+ .footer{
+    position: sticky;
+    bottom: 0;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 5px;
+    margin: 10px; /* Add margin to separate from content */
+    text-align: center;
+
+ }
+.site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--space-md) 0;
+    margin-top: var(--space-xl); /* Add margin to separate from content */
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    opacity: 0.9;
+}
+
+/*
+ * -------------------------------------------------------------
+ * 9. Responsive Design
+ * -------------------------------------------------------------
+ * Adjustments for different screen sizes.
+ */
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-sm);
+    }
+
+    .banner {
+        padding: var(--space-lg) 0;
+    }
+
+    .banner h1 {
+        font-size: 2rem; /* Specific font size */
+    }
+
+    .search-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .bus-cards {
+        grid-template-columns: 1fr;
+        padding: 0 var(--space-xs); /* Reduced padding for small screens */
+    }
+
+    .map-container {
+        height: 300px; /* Specific height */
+    }
+
+    .route-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
+        margin: 0 auto var(--space-md) auto;
+    }
+
+    .route-image { /* If you add an image to route-card */
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .route-image img { /* If you add an image to route-card */
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .bus-list {
+        grid-template-columns: 1fr;
+    }
+
+    .bus-list li {
+        flex-direction: column;
+        gap: var(--space-xs);
+        text-align: center;
+    }
+}
+
+/* Tablet (min-width: 769px and max-width: 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .bus-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        padding: 0 var(--space-md);
+    }
+
+    .banner h1 {
+        font-size: 2.2rem; /* Specific font size */
+    }
+}
+
+/*
+ * -------------------------------------------------------------
+ * 10. Print Styles
+ * -------------------------------------------------------------
+ * Optimizes content for printing.
+ */
+@media print {
+    /* Hide non-essential elements for print */
+    .navbar,
+    .search-section,
+    .btn,
+    .footer {
+        display: none;
+    }
+
+    body {
+        background-color: var(--color-white);
+        color: var(--color-gray-900);
+        font-size: 12pt;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .banner {
+        padding: var(--space-sm) 0;
+        background: none;
+        color: var(--color-gray-900);
+        text-align: left;
+    }
+
+    .banner h1 {
+        font-size: 1.5rem;
+    }
+
+    .bus-card,
+    .route-card {
+        break-inside: avoid; /* Prevents card from splitting across pages */
+        page-break-inside: avoid;
+        border: 1px solid var(--color-gray-400);
+        box-shadow: none;
+        margin-bottom: var(--space-sm);
+        background-color: var(--color-white);
+        color: var(--color-gray-900);
+    }
+
+    .bus-card:hover,
+    .route-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .route-table {
+        border: 1px solid var(--color-gray-400);
+        background-color: var(--color-white);
+        border-spacing: 0;
+    }
+
+    .route-table th,
+    .route-table td {
+        border: 1px solid var(--color-gray-300);
+        background-color: var(--color-white);
+        color: var(--color-gray-900);
+        border-radius: 0;
+    }
+}
+
+/*
+ * -------------------------------------------------------------
+ * 11. Accessibility Enhancements
+ * -------------------------------------------------------------
+ * Specific rules for accessibility features.
+ */
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .shared-route-info,
+    .toggle-route-info {
+        transition: none; /* Explicitly remove transitions */
+    }
+}
+
+/*
+ * -------------------------------------------------------------
+ * 12. Helper Classes (if any)
+ * -------------------------------------------------------------
+ * Small, single-purpose classes for specific needs.
+ */
+
+.time-text {
+   font-size: 1rem;
+   color: #ff0000; /* Specific red, consider making variable */
+   text-align: right;
+   font-weight: var(--font-weight-bold);
+}

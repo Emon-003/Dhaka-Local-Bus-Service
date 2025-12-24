@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="bn-BD">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find and track local bus routes in Dhaka city. Real-time bus schedules, fares, and route information for comfortable public transportation.">
+    <meta name="keywords" content="Dhaka bus, local bus, public transport, bus routes, bus fare, bus schedule">
+    <meta name="author" content="Dhaka Local Bus Services">
+    <meta property="og:title" content="Dhaka Local Bus Services - Home">
+    <meta property="og:description" content="Find and track local bus routes in Dhaka city. Real-time bus schedules, fares, and route information.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Dhaka Local Bus Services - Home</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+  <div class="page-wrapper">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a href="index.html" class="logo" aria-label="Home">Dhaka Local Bus Services</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                <li><a href="available-bus.html">Available Bus</a></li>
+                <li><a href="routes.html">All Bus Routes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="banner" role="banner">
+        <div class="container">
+            <h1>Dhaka Local Bus Services</h1>
+            <p>Affordable, reliable, and comfortable transportation</p>
+        </div>
+        
+        <div class="main-content">
+            <section class="search-section" aria-label="Bus route search">
+              <div class="search-container">
+                  <form id="busSearchForm" class="search-form" role="search" action="search-results.html" method="GET">
+                      <div class="search-fields">
+                          <div class="form-group">
+                              <label for="from">From:</label>
+                              <select id="from" name="from" required aria-required="true">
+                                  <option value="">যাত্রা শুরু (Starting Point)</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label for="to">To:</label>
+                              <select id="to" name="to" required aria-required="true">
+                                  <option value="">গন্তব্য (Destination)</option>
+                              </select>
+                          </div>
+                      </div>
+                      <button class="button" type="submit">Search Buses</button>
+                  </form>
+              </div>
+            </section>
+        </div>
+    </header>
+
+    <main role="main">
+        <div class="results" id="results" aria-live="polite"></div>
+
+        <div class="section-header">
+            <h3>বাসের সংখ্যা ও সময়সূচী</h3>
+        </div>
+
+        <div class="bus-cards">
+            <div class="bus-card">
+                <h3>From Gazipur Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 7-8 Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>
+            </div>
+            <div class="bus-card">
+                <h3>From Abdullahpur Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 5-7 Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>
+            </div>
+            <div class="bus-card">
+                <h3>From Mirpur Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 4-5Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>
+            </div>
+            <div class="bus-card">
+                <h3>From Motijheel Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 5-8 Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>    
+            </div>
+            <div class="bus-card">
+                <h3>From Gulistan Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 8-9 Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>
+            </div>
+            <div class="bus-card">
+                <h3>From Gabtoli Buses</h3>
+                <div class="bus-details">
+                    <p><strong>Buses Number</strong> 4-5 Buses</p>
+                    <p><strong>Time:</strong> Every 5-10 minutes</p>
+                    <p><strong>Fare:</strong> 10-70 Tk</p>
+                </div>    
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h3>ঢাকার পাবলিক বাস ব্যবস্থা: একটি সংক্ষিপ্ত বিশ্লেষণ</h3>
+        </div>
+
+        <div class="bus-card" style="max-width:70%; margin:32px auto; background: #cdf1ff;">
+            <div class="analysis-section">
+                <h4 style="font-size:1.2em; margin-bottom:10px;">পরিচালনা ব্যবস্থা ও পরিসংখ্যান</h4>
+                <ul style="margin-bottom:20px;">
+                    <li>বেসরকারি খাতের আধিপত্য: প্রায় ৭৫টি কোম্পানির ৫,০০০+ বাস ৩০০টিরও বেশি রুটে চলাচল করে</li>
+                    <li>সরকারি অংশগ্রহণ: বিআরটিসির মোট ১,২৬৮টি বাসের মধ্যে অল্পসংখ্যকই সক্রিয় (২০২৪ সালের তথ্য)</li>
+                    <li>যাত্রী সংখ্যা: দৈনিক ১ কোটিরও বেশি মানুষ বাস ব্যবহার করেন (২০২০ সালের তথ্য)</li>
+                </ul>
+            
+                <h4 style="margin-bottom:10px;">প্রধান সমস্যাসমূহ</h4>
+                <ul style="margin-bottom:20px;">
+                    <li>অনিয়ন্ত্রিত বাস পরিষেবা: ৩,৭৯৪টি পারমিটপ্রাপ্ত বাসের মধ্যে ৮৭১টির ফিটনেস সার্টিফিকেট নেই</li>
+                    <li>নিরাপত্তা ঝুঁকি: ভাঙা আসন, ত্রুটিপূর্ণ ব্রেক ব্যবস্থা এবং অস্বাস্থ্যকর পরিবেশ</li>
+                    <li>কর্মী সংকট: বেসরকারি চালকদের ট্রিপ-ভিত্তিক আয় ব্যবস্থা যাত্রী ধরে প্রতিযোগিতা তৈরি করে</li>
+                </ul>
+
+                <h4 style="margin-bottom:10px;">বিআরটিসির বাস বহর</h4>
+                <ul style="margin-bottom:20px;">
+                    <li>ডাবল-ডেকার বাস: অশোক লেল্যান্ড মডেল (ভলভো বাস ২০২২ সালে বাতিল)</li>
+                    <li>আর্টিকুলেটেড বাস: ৩৫টি চীনা এফএডব্লিউ বাস যা কম ব্যবহার হয়</li>
+                    <li>সমালোচনা: দ্রুত ক্ষয়প্রাপ্তি এবং রক্ষণাবেক্ষণের অভাব</li>
+                </ul>
+
+                <h4 style="margin-bottom:10px;">ভবিষ্যৎ পরিকল্পনা ও চ্যালেঞ্জ</h4>
+                <ul style="margin-bottom:20px;">
+                    <li>ঢাকা বিআরটি: ২০ কিলোমিটার রুটে নির্মাণাধীন (প্রাক্কলিত সমাপ্তি ডিসেম্বর ২০২৫)</li>
+                    <li>বেসরকারি খাতের অনিয়ন্ত্রিত বিস্তার</li>
+                    <li>সরকারি সংস্থার সীমিত কার্যকারিতা</li>
+                    <li>অবকাঠামোগত সীমাবদ্ধতা</li>
+                </ul>
+
+                <h4 style="margin-bottom:10px;">প্রস্তাবিত সমাধান</h4>
+                <ul style="margin-bottom:30px;">
+                    <li>বিআরটিসিকে শক্তিশালীকরণ</li>
+                    <li>বাসের ফিটনেস মান নিশ্চিতকরণ</li>
+                    <li>বিআরটি প্রকল্পের দ্রুত বাস্তবায়ন</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Dhaka Local Bus Services. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+  </div>
+
+     <script src="js/script.js"></script>
+    </body>
+</html>
