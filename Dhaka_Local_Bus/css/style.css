@@ -1,26 +1,4 @@
-/*
- * Project: Dhaka Local Bus Information System
- * Author: Group-38
-            
-                * Gazi Hasibur Rahman - (41220100105)
-                * Emon Ahmed Shishir  - (41220100110)
-                * Ferdous Alam Prince - (41220100135)
-                * Sowrav Chandra Das  - (41220100137)
-                * Joyonto Kumer Das   - (41220100140)
 
- * Date: May 25, 2025
- * Description: Core styles for the bus route information system,
- * including global resets, typography, layout,
- * components, and responsive adjustments.
- */
-
-/*
- * -------------------------------------------------------------
- * 1. CSS Custom Properties (Variables)
- * -------------------------------------------------------------
- * Defines a centralized color palette, spacing, and other
- * repeatable values for easier maintenance and consistency.
- */
 :root {
     /* Color Palette */
     --color-primary: #2c3e50;         /* Deep Blue/Charcoal */
